@@ -1,43 +1,28 @@
 import styles from './App.module.css';
 import React, { useEffect, useState } from 'react';
-import { Task } from './components/Task';
+const URL_TASKS = 'https://jsonplaceholder.typicode.com/todos';
 
 export const App = () => {
 	const [tasks, setTasks] = useState([]);
-	const [isLoading, setIsLoading] = useState(false);
-	const [isCreating, setIsCreating] = useState(false);
-	const URL_TASKS = 'https://jsonplaceholder.typicode.com/todos'
 
-	const requestAddTasks = () => {
-		fetch(URL_TASKS, {
-			method: 'GET',
-		})
-		.then((rawResponse) => rawResponse.json())
-		.then((response) => {
-			setTasks([...tasks, response]);
-			if (response.ok) {
-				console.log('Задачи загружены, ответ сервера: ', response);
-			} else {
-				throw new Error('Ошибка загрузки задач');
-			}
-		})
-		.catch((error) => {
-			console.error(error)
-		})
-	}
+	useEffect(() => {
+		fetch(URL_TASKS)
+			.then((response) => {
+				return response.json();
+			}).then((data) => {
+				setTasks(data);
+			})
+	}, []);
+
     return (
         <div className={styles.app}>
 			<header className={styles.header}>
-				<h1>To-do list step 1</h1>
+				<h1 className={styles.title}>To-do list</h1>
 			</header>
-			<button onClick={requestAddTasks}>Загрузить список</button>
 			<main className={styles.main}>
-				{isLoading ? (
-					<div>Загрузка</div>
-				) : (
-					<Task tasks={tasks}/>
-				)
-			}
+				{tasks.map((tasks) => {
+					return <li key={tasks.id} className={styles.list}>{tasks.title}</li>
+				})}
 			</main>
 		</div>
     );
