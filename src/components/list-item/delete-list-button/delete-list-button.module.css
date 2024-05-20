@@ -1,0 +1,8 @@
+button {
+    box-sizing: border-box;
+    height: 30px;
+    width: 50px;
+    background-color: #eecb40;
+    border-radius: 3px;
+    border: 1px solid #b3982e;
+}

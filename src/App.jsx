@@ -1,28 +1,24 @@
 import styles from './App.module.css';
 import React, { useEffect, useState } from 'react';
-const URL_TASKS = 'https://jsonplaceholder.typicode.com/todos';
+import { ListItem } from './components/list-item/list-item';
+import { Header } from './components/header/header';
 
 export const App = () => {
-	const [tasks, setTasks] = useState([]);
+	const [todos, setTodos] = useState([]);
 
 	useEffect(() => {
-		fetch(URL_TASKS)
-			.then((response) => {
-				return response.json();
-			}).then((data) => {
-				setTasks(data);
-			})
-	}, []);
+		fetch('http://localhost:3003/todos')
+			.then((todosData) => todosData.json())
+			.then((loadedTodos) => setTodos(loadedTodos));
+	}, [])
 
     return (
         <div className={styles.app}>
-			<header className={styles.header}>
-				<h1 className={styles.title}>To-do list</h1>
-			</header>
+			<Header/>
 			<main className={styles.main}>
-				{tasks.map((tasks) => {
-					return <li key={tasks.id} className={styles.list}>{tasks.title}</li>
-				})}
+					{todos.map(({id, title, completed}) => (
+						<ListItem  key={id} title={title} completed={completed}/>
+					))}
 			</main>
 		</div>
     );
