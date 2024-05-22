@@ -3,7 +3,6 @@ import styles from './search-todo-form.module.css';
 export const SearchTodoForm = ({...props}) => {
 	return (
 		<form className={styles['search-form']}>
-			<div>
 			<input
 				type="text"
 				placeholder={'Поиск задачи'}
@@ -12,7 +11,7 @@ export const SearchTodoForm = ({...props}) => {
 				onChange={props.onSearchPhraseChange}
 			/>
 			<input
-				className={['sorting-button']}
+				className={styles['sorting-button']}
 				type='checkbox'
 				checked={props.isSortingEnabled}
 				onChange={props.onSortingChange}
@@ -22,7 +21,6 @@ export const SearchTodoForm = ({...props}) => {
 				className={styles['search-todo-button']}
 				value={'Search'}
 			/>
-			</div>
 		</form>
 	)
 }

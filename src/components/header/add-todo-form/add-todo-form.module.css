@@ -1,13 +1,15 @@
 .add-todo-form {
+    display: flex;
     margin: auto;
     background-color: white;
     width: 700px;
     border-radius: 5px;
     height: 45px;
+    justify-content: space-between;
 }
 
 .add-todo-input {
-    width: 510px;
+    width: 530px;
     height: 30px;
     margin: 8px 5px 5px 30px;
     box-sizing: border-box;
@@ -18,11 +20,17 @@
 
 .add-todo-button {
     box-sizing: border-box;
-    margin: 8px 5px 5px 5px;
+    margin: 8px 25px 5px 15px;
     height: 30px;
-    width: 130px;
+    width: 100px;
     text-align: center;
     background-color: #eecb40;
     border-radius: 3px;
     border: 1px solid #b3982e;
+}
+
+.sorting-flag {
+    height: 25px;
+    width: 25px;
+    display: block;
 }

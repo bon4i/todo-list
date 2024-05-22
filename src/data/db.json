@@ -1,14 +1,9 @@
 {
-	"todos": [
-		{
-			"id": 0,
-			"title": 123,
-			"completed": false
-		},
-		{
-			"id": 1,
-			"title": 12333333333333333333333333333,
-			"completed": false
-		}
-	]
+  "todos": [
+    {
+      "id": 1,
+      "title": "lorem lorem lorem lorem lorem",
+      "completed": false
+    }
+  ]
 }
