@@ -1,0 +1,10 @@
+.checbox {
+    margin-top: 8px 10px 5px 15px;
+    height: 40px;
+    width: 25px;
+}
+
+.checkbox:checked + .label {
+    padding: 2px 0 0 2px;
+    box-shadow: inset 2px 2px 3px 0 #999;
+}

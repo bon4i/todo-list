@@ -1,6 +1,6 @@
-import styles from './list-button.module.css';
+import styles from './button.module.css';
 
-export const ListButton = ({children, onClick}) => {
+export const Button = ({children, onClick}) => {
 	return (
 		<button className={styles['list-button']} onClick={onClick}>
 			{children}

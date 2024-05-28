@@ -1,45 +1,43 @@
-import { CompletedFlag } from './completed-flag/completed-flag';
+import { Button } from '../button/button';
+import { Checkbox } from '../checkbox/checkbox';
 import styles from './list-item.module.css';
-import { useState } from 'react';
-import { ListButton } from './list-button/list-button';
-import {updateTodo, deleteTodo} from '../../api/api';
 
-export const ListItem = ({id, title, completed}) => {
-	const [isEditing, setIsEditing] = useState(false);
-	const [newTitle, setNewtitle] = useState(title);
-
-	const onTodoTitleChange = ({ target }) => {
-		setNewtitle(target.value);
-	}
-
-	const onTodoEdit = () => {
-		setIsEditing(true);
-	};
-
-	const onTodoSave = () => {
-		setIsEditing(false);
-		updateTodo({id, title: newTitle});
-	};
-
-	const onTodoRemove = () => {
-		deleteTodo(id);
-	};
+export const ListItem = ({
+	title,
+	completed,
+	onCompletedChange,
+	isEditing,
+	onEdit,
+	onTitleChange,
+	onSave,
+	onRemove
+}) => {
 
 	return (
 		<div className={styles.list}>
-			<p className={styles.title}>
+			<div className={styles.title}>
 				{isEditing ? (
-						<input type='text' value={newTitle}
-						onChange={onTodoTitleChange}
+						<input
+							className={styles['input-edit']}
+							type='text'
+							value={title}
+							onChange={({ target }) => onTitleChange(target.value)}
+							maxLength={70}
 						/>
-					) : <div onClick={onTodoEdit}></div>}
-			</p>
-			<CompletedFlag completed={completed}/>
+					) : (
+					<div onClick={onEdit}>{title}</div>
+				)}
+			</div>
+			<Checkbox
+				className={styles['completed-flag']}
+				checked={completed}
+				onChange={({ target }) => onCompletedChange(target.checked)}
+			/>
 			<div>
 				{isEditing ? (
-					<ListButton onClick={onTodoRemove}>Save</ListButton>
+					<Button onClick={onSave}>Save</Button>
 				) : (
-					<ListButton onClick={onTodoSave}>Edit</ListButton>
+					<Button onClick={onRemove}>Delete</Button>
 				)}
 			</div>
 		</div>

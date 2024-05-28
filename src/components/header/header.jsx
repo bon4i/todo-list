@@ -1,36 +1,17 @@
-import { AddTodoForm } from './add-todo-form/add-todo-form';
 import { SearchTodoForm } from './search-todo-form/search-todo-form';
+import { Title } from './title/title';
 import styles from './header.module.css';
-import { useState } from 'react';
 
-export const Header = () => {
-	const [searchPhrase, setSearchPhrase] = useState('');
-	const [isSortingEnabled, setIsSortingEnabled] = useState(false);
-
-	const onSearchPhraseChange = ({ target }) => {
-		setSearchPhrase(target.value)
-	}
-
-	const onSortingChange = ({ target }) => {
-		setIsSortingEnabled(target.checked)
-	}
-
-	const onTodoAdd = () => {
-		
-	};
+export const Header = ({onTodoAdd, onSearch, onSorting}) => {
 
 	return (
 		<header className={styles.header}>
-			<h1 className={styles['header-title']}>
-				to-do list
-			</h1>
+			<Title />
 			<SearchTodoForm
-				searchPhrase={searchPhrase}
-				isSortingEnabled={isSortingEnabled}
-				onSearchPhraseChange={onSearchPhraseChange}
-				onSortingChange={onSortingChange}
+				onSearch={onSearch}
+				onSorting={onSorting}
+				onTodoAdd={onTodoAdd}
 			/>
-			<AddTodoForm />
 		</header>
 	)
 }

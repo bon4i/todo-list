@@ -1,26 +1,18 @@
+import { Button } from '../../button/button';
+import { SearchInput } from './search-input/search-input';
 import styles from './search-todo-form.module.css';
+import { Sorting } from './sorting/sorting';
 
-export const SearchTodoForm = ({...props}) => {
+export const SearchTodoForm = ({
+	onTodoAdd,
+	onSearch,
+	onSorting
+}) => {
 	return (
-		<form className={styles['search-form']}>
-			<input
-				type="text"
-				placeholder={'Поиск задачи'}
-				className={styles['search-input']}
-				value={props.searchPhrase}
-				onChange={props.onSearchPhraseChange}
-			/>
-			<input
-				className={styles['sorting-button']}
-				type='checkbox'
-				checked={props.isSortingEnabled}
-				onChange={props.onSortingChange}
-			/>
-			<input
-				type="button"
-				className={styles['search-todo-button']}
-				value={'Search'}
-			/>
-		</form>
-	)
-}
+		<div className={styles['search-form']}>
+			<SearchInput onSearch={onSearch}/>
+			<Sorting onSorting={onSorting}/>
+			<Button onClick={onTodoAdd}>✚</Button>
+		</div>
+	);
+};

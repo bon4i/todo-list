@@ -1,10 +1,10 @@
-.list-button {
+.checkbox {
     box-sizing: border-box;
-    margin: 8px 5px 5px 0px;
+    margin: 8px 25px 5px 15px;
     height: 30px;
-    width: 60px;
+    width: 100px;
+    text-align: center;
     background-color: #eecb40;
     border-radius: 3px;
     border: 1px solid #b3982e;
-    text-align: center;
 }

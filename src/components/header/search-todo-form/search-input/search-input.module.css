@@ -1,0 +1,9 @@
+.search-input {
+    width: 470px;
+    height: 30px;
+    margin: 8px 5px 5px 30px;
+    box-sizing: border-box;
+    outline: 0;
+    border-width: 0 0 1px;
+    border-color: #575757;
+}
