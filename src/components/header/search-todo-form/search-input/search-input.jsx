@@ -3,7 +3,7 @@ import { Button } from '../../../button/button';
 import { debounce } from './utils';
 import styles from './search-input.module.css';
 
-export const SearchInput = ({searchPhrase, onSearchPhraseChange, onSearch}) => {
+export const SearchInput = ({onSearch}) => {
 	const [value, setValue] = useState('');
 
 	const debouncedOnSearch = useRef(debounce(onSearch, 1500)).current;
@@ -26,7 +26,6 @@ export const SearchInput = ({searchPhrase, onSearchPhraseChange, onSearch}) => {
 				value={value}
 				onChange={onChange}
 			/>
-			<Button type='submit' onClick={onSearch}>🔍</Button>
 		</div>
 	)
 }
