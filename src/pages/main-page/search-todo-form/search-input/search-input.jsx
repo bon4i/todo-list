@@ -1,5 +1,5 @@
 import { useRef, useState } from 'react';
-import { Button } from '../../../button/button';
+import { Button } from '../../../../components/button/button';
 import { debounce } from './utils';
 import styles from './search-input.module.css';
 
